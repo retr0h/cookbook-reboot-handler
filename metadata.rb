@@ -11,5 +11,4 @@ recipe           "reboot-handler", "Installs/Configures reboot-handler"
   supports os
 end
 
-depends "mixlib-shellout"
 depends "chef_handler"

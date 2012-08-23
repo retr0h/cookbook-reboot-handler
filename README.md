@@ -9,12 +9,7 @@ in a given role.
 Requirements
 ============
 
-* Chef 0.8+
-
-mixlib-shellout
-----
-
-Installs/Configures mixlib-shellout
+* Chef 10.12.0+
 
 chef_handler
 ----
