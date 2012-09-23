@@ -18,7 +18,6 @@
 #
 
 include_recipe "chef_handler"
-include_recipe "mixlib-shellout"
 
 cookbook_file(File.join(node['chef_handler']['handler_path'], "reboot.rb")).run_action(:create)
 
