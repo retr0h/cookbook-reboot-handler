@@ -17,5 +17,5 @@
 # limitations under the License.
 #
 
-default['reboot-handler']['reboot_command'] = "sync; sync; shutdown -r +5m"
+default['reboot-handler']['reboot_command'] = "sync; sync; shutdown -r +1&"
 default['reboot-handler']['enabled_role'] = "booted"
