@@ -9,7 +9,13 @@ class Reboot < Chef::Handler
       if node.roles.include? node['reboot-handler']['enabled_role']
         ### AND node has the reboot flag.
         if node.run_state['reboot']
-          ### THEN reboot node.
+          ### THEN reset run_list if necessary.
+          if runlist = node['reboot-handler']['post_boot_runlist']
+            node.run_list.reset! runlist
+            node.save
+          end
+
+          ### AND reboot node.
           ::Chef::ShellOut.new(node['reboot-handler']['reboot_command']).run_command
         end
       end
