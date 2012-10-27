@@ -41,6 +41,18 @@ default
 
 Installs/Configures reboot-handler
 
+Testing
+=====
+
+This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing.
+
+    $ cd $repo
+    $ bundle
+    $ librarian-chef install
+    $ ln -s ../ cookbooks/$short_repo_name # doesn't contain "cookbook-"
+    $ foodcritic cookbooks/$short_repo_name
+    $ rspec cookbooks/$short_repo_name
+
 License and Author
 ==================
 
