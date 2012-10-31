@@ -26,14 +26,14 @@ describe Reboot do
   end
 
   it "doesn't reboot if the node has the enabled_role, but missing the reboot flag" do
-    @node.roles << "booted"
+    @node['roles'] << "booted"
 
     @handler.run_report_unsafe(@run_status).should_not be_true
   end
 
   describe "with enabled_role and reboot flag" do
     before do
-      @node.roles << "booted"
+      @node['roles'] << "booted"
       @node.run_state['reboot'] = true
     end
 
@@ -55,7 +55,7 @@ describe Reboot do
       end.converge("reboot-handler::default").node
       node.stub :save
       run_status = ::Chef::RunStatus.new node, Chef::EventDispatch::Dispatcher.new
-      node.roles << "booted"
+      node['roles'] << "booted"
       node.run_state['reboot'] = true
       @handler.run_report_unsafe(run_status)
 
