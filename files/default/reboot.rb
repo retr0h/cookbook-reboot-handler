@@ -1,4 +1,4 @@
-class Reboot < Chef::Handler
+class Reboot < ::Chef::Handler
   def initialize
   end
 

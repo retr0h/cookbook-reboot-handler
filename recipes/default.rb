@@ -19,11 +19,11 @@
 
 include_recipe "chef_handler"
 
-cookbook_file(File.join(node['chef_handler']['handler_path'], "reboot.rb")).run_action(:create)
+cookbook_file(::File.join(node['chef_handler']['handler_path'], "reboot.rb")).run_action(:create)
 
 begin
   require ::File.join node["chef_handler"]["handler_path"], "reboot"
-rescue LoadError
+rescue ::LoadError
 end
 
 chef_handler "Chef::Handler::Reboot" do
