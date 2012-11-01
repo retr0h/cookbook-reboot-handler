@@ -19,11 +19,17 @@
 
 include_recipe "chef_handler"
 
-cookbook_file(File.join(node['chef_handler']['handler_path'], "reboot.rb")).run_action(:create)
+cookbook_file(::File.join(node['chef_handler']['handler_path'], "reboot.rb")).run_action(:create)
+
+##
+# This was primarily done to prevent others from having to stub
+# `include_recipe "reboot_handler"` inside ChefSpec.  ChefSpec
+# doesn't seem to handle the following well on convergence.
 
 begin
   require ::File.join node["chef_handler"]["handler_path"], "reboot"
-rescue LoadError
+rescue ::LoadError
+  log("Unable to require the reboot handler!") { level :error }
 end
 
 chef_handler "Chef::Handler::Reboot" do

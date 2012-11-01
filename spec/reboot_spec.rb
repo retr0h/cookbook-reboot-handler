@@ -12,7 +12,7 @@ describe Reboot do
     @handler = ::Reboot.new
     @node = ::ChefSpec::ChefRunner.new.converge("reboot-handler::default").node
     @node.stub :save
-    @run_status = ::Chef::RunStatus.new @node, Chef::EventDispatch::Dispatcher.new
+    @run_status = ::Chef::RunStatus.new @node, ::Chef::EventDispatch::Dispatcher.new
   end
 
   it "doesn't reboot if the run failed" do
@@ -54,7 +54,7 @@ describe Reboot do
         n.set['reboot-handler']['post_boot_runlist'] = ["role[foo]"]
       end.converge("reboot-handler::default").node
       node.stub :save
-      run_status = ::Chef::RunStatus.new node, Chef::EventDispatch::Dispatcher.new
+      run_status = ::Chef::RunStatus.new node, ::Chef::EventDispatch::Dispatcher.new
       node['roles'] << "booted"
       node.run_state['reboot'] = true
       @handler.run_report_unsafe(run_status)
