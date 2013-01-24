@@ -1,6 +1,2 @@
-Cheffile.lock
 .bundle
-.cache
-.rvmrc
-/cookbooks
-/tmp
+.cookbooks/

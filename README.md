@@ -58,7 +58,7 @@ License and Author
 
 Author:: John Dewey (<john@dewey.ws>)
 
-Copyright 2012, John Dewey
+Copyright 2012-2013, John Dewey
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
