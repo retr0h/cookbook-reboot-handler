@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/retr0h/cookbook-reboot-handler.png?branch=master)](https://travis-ci.org/retr0h/cookbook-reboot-handler)
+
 Description
 ===========
 
@@ -44,21 +46,18 @@ Installs/Configures reboot-handler
 Testing
 =====
 
-This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing.
+This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for
+testing.  Should run the following before commiting.  It will run your tests,
+and check for lint errors.
 
-    $ cd $repo
-    $ bundle
-    $ librarian-chef install
-    $ ln -s ../ cookbooks/$short_repo_name # doesn't contain "cookbook-"
-    $ foodcritic cookbooks/$short_repo_name
-    $ rspec cookbooks/$short_repo_name
+    % ./run_tests.bash
 
 License and Author
 ==================
 
 Author:: John Dewey (<john@dewey.ws>)
 
-Copyright 2012, John Dewey
+Copyright 2012-2013, John Dewey
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
