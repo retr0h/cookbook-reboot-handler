@@ -16,7 +16,7 @@ class Reboot < ::Chef::Handler
           end
 
           ### AND reboot node.
-          ::Chef::ShellOut.new(node['reboot-handler']['reboot_command']).run_command
+          ::Mixlib::ShellOut.new(node['reboot-handler']['reboot_command']).run_command
         end
       end
     end

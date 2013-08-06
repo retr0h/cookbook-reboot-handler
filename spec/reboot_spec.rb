@@ -2,7 +2,7 @@ require "chefspec"
 require ::File.join ::File.dirname(__FILE__), "..", "files", "default", "reboot"
 
 describe Reboot do
-  ::Chef::ShellOut.class_eval do
+  ::Mixlib::ShellOut.class_eval do
     def run_command
       true
     end
@@ -42,7 +42,7 @@ describe Reboot do
     end
 
     it "issues correct reboot_command" do
-      ::Chef::ShellOut.should_receive(:new).
+      ::Mixlib::ShellOut.should_receive(:new).
         with("sync; sync; shutdown -r +1&").
         and_return({:run_command => true})
 
