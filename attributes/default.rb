@@ -19,4 +19,4 @@
 
 default['reboot-handler']['reboot_command'] = "sync; sync; shutdown -r +1&"
 default['reboot-handler']['enabled_role'] = "booted"
-default['reboot-handler']['post_boot_runlist'] = false
+default['reboot-handler']['post_boot_runlist'] = []
