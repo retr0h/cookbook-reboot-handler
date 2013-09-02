@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/retr0h/cookbook-reboot-handler.png?branch=master)](https://travis-ci.org/retr0h/cookbook-reboot-handler)
+[![Dependency Status](https://gemnasium.com/retr0h/cookbook-reboot-handler.png)](https://gemnasium.com/retr0h/cookbook-reboot-handler)
 
 Description
 ===========
