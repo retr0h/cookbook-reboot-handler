@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/retr0h/cookbook-reboot-handler.png?branch=master)](https://travis-ci.org/retr0h/cookbook-reboot-handler)
+[![Dependency Status](https://gemnasium.com/retr0h/cookbook-reboot-handler.png)](https://gemnasium.com/retr0h/cookbook-reboot-handler)
 
 Description
 ===========
@@ -44,13 +45,11 @@ default
 Installs/Configures reboot-handler
 
 Testing
-=====
+=======
 
-This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for
-testing.  Should run the following before commiting.  It will run your tests,
-and check for lint errors.
-
-    % ./run_tests.bash
+    $ bundle install
+    $ bundle exec berks install
+    $ bundle exec strainer test
 
 License and Author
 ==================
