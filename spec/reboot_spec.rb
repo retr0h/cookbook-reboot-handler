@@ -1,4 +1,4 @@
-require "chefspec"
+require_relative "spec_helper"
 require ::File.join ::File.dirname(__FILE__), "..", "files", "default", "reboot"
 
 describe Reboot do
@@ -10,7 +10,7 @@ describe Reboot do
 
   before do
     @handler = ::Reboot.new
-    @node = ::ChefSpec::ChefRunner.new.converge("reboot-handler::default").node
+    @node = ::ChefSpec::Runner.new.converge("reboot-handler::default").node
     @node.stub :save
     @run_status = ::Chef::RunStatus.new @node, ::Chef::EventDispatch::Dispatcher.new
   end
@@ -42,15 +42,16 @@ describe Reboot do
     end
 
     it "issues correct reboot_command" do
+      obj = double
+      obj.stub(:run_command) { true }
       ::Mixlib::ShellOut.should_receive(:new).
         with("sync; sync; shutdown -r +1&").
-        and_return({:run_command => true})
-
+        and_return(obj)
       @handler.run_report_unsafe(@run_status)
     end
 
     it "resets run_list if node has a post_boot_runlist attribute" do
-      node = ::ChefSpec::ChefRunner.new do |n|
+      node = ::ChefSpec::Runner.new do |n|
         n.set['reboot-handler']['post_boot_runlist'] = ["role[foo]"]
       end.converge("reboot-handler::default").node
       node.stub :save

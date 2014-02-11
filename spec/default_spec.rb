@@ -1,10 +1,10 @@
-require "chefspec"
+require_relative "spec_helper"
 
 describe "reboot-handler::default" do
   before do
     Chef::Recipe.any_instance.stub(:require).
       with("/var/chef/handlers/reboot")
-    @chef_run = ::ChefSpec::ChefRunner.new
+    @chef_run = ::ChefSpec::Runner.new
   end
 
   it "includes chef_handler" do
@@ -23,7 +23,7 @@ describe "reboot-handler::default" do
   it "doesn't log" do
     @chef_run.converge "reboot-handler::default"
 
-    @chef_run.should_not log "Unable to require the reboot handler!"
+    @chef_run.should_not write_log "Unable to require the reboot handler!"
   end
 
   it "logs when handler is missing" do
@@ -32,7 +32,7 @@ describe "reboot-handler::default" do
       and_raise ::LoadError.new
     @chef_run.converge "reboot-handler::default"
 
-    @chef_run.should log "Unable to require the reboot handler!"
+    @chef_run.should write_log "Unable to require the reboot handler!"
   end
 
   it "chef_handler lwrp" do
