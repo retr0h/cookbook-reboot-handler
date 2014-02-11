@@ -12,10 +12,10 @@ in a given role.
 Requirements
 ============
 
-* Chef 10.12.0+
+* Chef 11
 
 chef_handler
-----
+------------
 
 Installs/Configures chef-handler
 
@@ -40,23 +40,21 @@ Simply set the following attribute while chef is executing.
     node.run_state['reboot'] = true
 
 default
-----
+-------
 
 Installs/Configures reboot-handler
 
 Testing
 =======
 
-    $ bundle install
-    $ bundle exec berks install
-    $ bundle exec strainer test
+    $ rake
 
 License and Author
 ==================
 
 Author:: John Dewey (<john@dewey.ws>)
 
-Copyright 2012-2013, John Dewey
+Copyright 2012-2014, John Dewey
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

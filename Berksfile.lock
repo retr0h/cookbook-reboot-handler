@@ -1,2 +1,10 @@
-cookbook 'reboot-handler', :path => '/home/jdewey/git/cookbook-reboot-handler'
-cookbook 'chef_handler', :locked_version => '1.1.4'
+{
+  "sources": {
+    "reboot-handler": {
+      "path": "."
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    }
+  }
+}
