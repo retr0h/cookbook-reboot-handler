@@ -62,7 +62,7 @@ describe Reboot do
       node.run_state['reboot'] = true
       @handler.run_report_unsafe(status)
 
-      node.run_list.to_s.should eq('role[foo]')
+      node.run_list.to_s.should eq 'role[foo]'
     end
   end
 end
