@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
-# A Chef handler to manage reboots.
-class Reboot < Chef::Handler
+class Reboot < Chef::Handler # rubocop:disable Documentation
   def initialize
   end
 
