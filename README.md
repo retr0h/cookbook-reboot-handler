@@ -22,7 +22,7 @@ Installs/Configures chef-handler
 Attributes
 ==========
 
-* `default['reboot-handler']['reboot_command']` - Reboot command to execute.
+* `default['reboot-handler']['command']` - Reboot command to execute.
 * `default['reboot-handler']['enabled_role']` - Role to enable the handler on (default: booted).
 * `default['reboot-handler']['post_boot_runlist']` - If set will redefine `node['run_list']` to it's value.
 

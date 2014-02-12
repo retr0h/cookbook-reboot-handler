@@ -1,3 +1,4 @@
+# encoding: UTF-8
 #
 # Cookbook Name:: reboot-handler
 # Recipe:: default
@@ -17,6 +18,6 @@
 # limitations under the License.
 #
 
-default['reboot-handler']['reboot_command'] = "sync; sync; shutdown -r +1&"
-default['reboot-handler']['enabled_role'] = "booted"
+default['reboot-handler']['command'] = 'sync; sync; shutdown -r +1&'
+default['reboot-handler']['enabled_role'] = 'booted'
 default['reboot-handler']['post_boot_runlist'] = []

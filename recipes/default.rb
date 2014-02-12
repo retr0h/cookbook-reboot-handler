@@ -1,3 +1,4 @@
+# encoding: UTF-8
 #
 # Cookbook Name:: reboot-handler
 # Recipe:: default
@@ -17,9 +18,10 @@
 # limitations under the License.
 #
 
-include_recipe "chef_handler"
+include_recipe 'chef_handler'
 
-cookbook_file(::File.join(node['chef_handler']['handler_path'], "reboot.rb")).run_action(:create)
+handler = File.join(node['chef_handler']['handler_path'], 'reboot.rb')
+cookbook_file(handler).run_action(:create)
 
 ##
 # This was primarily done to prevent others from having to stub
@@ -27,14 +29,14 @@ cookbook_file(::File.join(node['chef_handler']['handler_path'], "reboot.rb")).ru
 # doesn't seem to handle the following well on convergence.
 
 begin
-  require ::File.join node["chef_handler"]["handler_path"], "reboot"
-rescue ::LoadError
-  log("Unable to require the reboot handler!") { level :error }
+  require File.join node['chef_handler']['handler_path'], 'reboot'
+rescue LoadError
+  log('Unable to require the reboot handler!') { level :error }
 end
 
-chef_handler "Chef::Handler::Reboot" do
-  source   ::File.join node['chef_handler']['handler_path'], "reboot.rb"
-  supports :report => true
+chef_handler 'Chef::Handler::Reboot' do
+  source   File.join node['chef_handler']['handler_path'], 'reboot.rb'
+  supports report: true
 
   action :nothing
 end.run_action(:enable)
