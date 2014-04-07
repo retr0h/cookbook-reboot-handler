@@ -19,17 +19,17 @@ describe Reboot do
   it "doesn't reboot if the run failed" do
     status.exception = Exception.new
 
-    handler.run_report_unsafe(status).should_not be_true
+    expect(handler.run_report_unsafe(status)).not_to be
   end
 
   it "doesn't reboot if the node does not have the enabled_role" do
-    handler.run_report_unsafe(status).should_not be_true
+    expect(handler.run_report_unsafe(status)).not_to be
   end
 
   it "doesn't reboot if the node has the enabled_role, but missing the reboot flag" do # rubocop:disable LineLength
     node.stub(:roles).and_return ['booted']
 
-    handler.run_report_unsafe(status).should_not be_true
+    expect(handler.run_report_unsafe(status)).not_to be
   end
 
   context 'with enabled_role and reboot flag' do
@@ -39,7 +39,7 @@ describe Reboot do
     end
 
     it 'reboots' do
-      handler.run_report_unsafe(status).should be_true
+      expect(handler.run_report_unsafe(status)).to be
     end
 
     it 'issues correct command' do
@@ -58,7 +58,7 @@ describe Reboot do
       node.run_state['reboot'] = true
       handler.run_report_unsafe(status)
 
-      node.run_list.to_s.should eq 'role[foo]'
+      expect(node.run_list.to_s).to eq 'role[foo]'
     end
   end
 end
