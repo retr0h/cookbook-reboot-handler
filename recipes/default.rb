@@ -35,7 +35,7 @@ rescue LoadError
 end
 
 chef_handler 'Chef::Handler::Reboot' do
-  source   File.join node['chef_handler']['handler_path'], 'reboot.rb'
+  source File.join node['chef_handler']['handler_path'], 'reboot.rb'
   supports report: true
 
   action :nothing
