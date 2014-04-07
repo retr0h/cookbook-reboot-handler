@@ -19,13 +19,13 @@ describe 'reboot-handler::default' do
   it 'installs the handler' do
     chef_run = runner.converge(described_recipe)
 
-    chef_run.should create_cookbook_file '/var/chef/handlers/reboot.rb'
+    expect(chef_run).to create_cookbook_file '/var/chef/handlers/reboot.rb'
   end
 
   it "doesn't log" do
     chef_run = runner.converge(described_recipe)
 
-    chef_run.should_not write_log 'Unable to require the reboot handler!'
+    expect(chef_run).not_to write_log 'Unable to require the reboot handler!'
   end
 
   it 'logs when handler is missing' do
@@ -34,7 +34,7 @@ describe 'reboot-handler::default' do
       .and_raise LoadError.new
     chef_run = runner.converge(described_recipe)
 
-    chef_run.should write_log 'Unable to require the reboot handler!'
+    expect(chef_run).to write_log 'Unable to require the reboot handler!'
   end
 
   it 'chef_handler lwrp' do

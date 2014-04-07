@@ -31,7 +31,9 @@ cookbook_file(handler).run_action(:create)
 begin
   require File.join node['chef_handler']['handler_path'], 'reboot'
 rescue LoadError
-  log('Unable to require the reboot handler!') { level :error }
+  log 'Unable to require the reboot handler!' do
+    action :write
+  end
 end
 
 chef_handler 'Chef::Handler::Reboot' do
