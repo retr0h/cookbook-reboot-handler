@@ -1,10 +1,9 @@
-{
-  "sources": {
-    "reboot-handler": {
-      "path": "."
-    },
-    "chef_handler": {
-      "locked_version": "1.1.4"
-    }
-  }
-}
+DEPENDENCIES
+  reboot-handler
+    path: .
+    metadata: true
+
+GRAPH
+  chef_handler (1.1.6)
+  reboot-handler (1.0.0)
+    chef_handler (>= 0.0.0)
