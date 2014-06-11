@@ -4,13 +4,13 @@ require_relative 'spec_helper'
 
 describe 'reboot-handler::default' do
   before do
-    Chef::Recipe.any_instance.stub(:require)
+    allow_any_instance_of(Chef::Recipe).to receive(:require)
       .with('/var/chef/handlers/reboot')
   end
   let(:runner) { ChefSpec::Runner.new }
 
   it 'includes chef_handler' do
-    Chef::Recipe.any_instance.should_receive(:include_recipe)
+    allow_any_instance_of(Chef::Recipe).to receive(:include_recipe)
       .with('chef_handler')
 
     runner.converge(described_recipe)
@@ -29,7 +29,7 @@ describe 'reboot-handler::default' do
   end
 
   it 'logs when handler is missing' do
-    Chef::Recipe.any_instance.should_receive(:require)
+    allow_any_instance_of(Chef::Recipe).to receive(:require)
       .with('/var/chef/handlers/reboot')
       .and_raise LoadError.new
     chef_run = runner.converge(described_recipe)
@@ -38,6 +38,6 @@ describe 'reboot-handler::default' do
   end
 
   it 'chef_handler lwrp' do
-    pending 'No idea how to test this'
+    skip 'No idea how to test this'
   end
 end

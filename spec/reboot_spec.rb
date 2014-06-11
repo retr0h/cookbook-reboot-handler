@@ -27,14 +27,14 @@ describe Reboot do
   end
 
   it "doesn't reboot if the node has the enabled_role, but missing the reboot flag" do # rubocop:disable LineLength
-    node.stub(:roles).and_return ['booted']
+    allow(node).to receive(:roles).and_return ['booted']
 
     expect(handler.run_report_unsafe(status)).not_to be
   end
 
   context 'with enabled_role and reboot flag' do
     before do
-      node.stub(:roles).and_return ['booted']
+      allow(node).to receive(:roles).and_return ['booted']
       node.run_state['reboot'] = true
     end
 
@@ -44,8 +44,8 @@ describe Reboot do
 
     it 'issues correct command' do
       obj = double
-      obj.stub(:run_command) { true }
-      Mixlib::ShellOut.should_receive(:new)
+      allow(node).to receive(:run_command).and_return true
+      allow_any_instance_of(Mixlib::ShellOut).to receive(:new)
         .with('sync; sync; shutdown -r +1&')
         .and_return(obj)
       handler.run_report_unsafe(status)
@@ -53,8 +53,8 @@ describe Reboot do
 
     it 'resets run_list if node has a post_boot_runlist attribute' do
       node.set['reboot-handler']['post_boot_runlist'] = ['role[foo]']
-      node.stub(:roles).and_return ['booted']
-      node.stub :save
+      allow(node).to receive(:roles).and_return ['booted']
+      allow(node).to receive(:save)
       node.run_state['reboot'] = true
       handler.run_report_unsafe(status)
 
