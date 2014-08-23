@@ -27,7 +27,6 @@ cookbook_file(handler).run_action(:create)
 # This was primarily done to prevent others from having to stub
 # `include_recipe "reboot_handler"` inside ChefSpec.  ChefSpec
 # doesn't seem to handle the following well on convergence.
-
 begin
   require File.join node['chef_handler']['handler_path'], 'reboot'
 rescue LoadError

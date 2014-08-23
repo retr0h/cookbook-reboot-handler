@@ -7,7 +7,12 @@ describe 'reboot-handler::default' do
     allow_any_instance_of(Chef::Recipe).to receive(:require)
       .with('/var/chef/handlers/reboot')
   end
-  let(:runner) { ChefSpec::Runner.new }
+  let(:runner) do
+    ChefSpec::Runner.new do |node|
+      node.set['chef_handler']['handler_path'] = '/var/chef/handlers'
+    end
+  end
+  let(:node) { runner.node }
 
   it 'includes chef_handler' do
     allow_any_instance_of(Chef::Recipe).to receive(:include_recipe)
