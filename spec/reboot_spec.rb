@@ -3,14 +3,14 @@
 require_relative 'spec_helper'
 require File.join File.dirname(__FILE__), '..', 'files', 'default', 'reboot'
 
-describe Reboot do
+describe Chef::Handler::Reboot do
   Mixlib::ShellOut.class_eval do
     def run_command
       true
     end
   end
 
-  let(:handler) { Reboot.new }
+  let(:handler) { Chef::Handler::Reboot.new }
   let(:node) { ChefSpec::Runner.new.converge('reboot-handler::default').node }
   let(:status) do
     Chef::RunStatus.new node, Chef::EventDispatch::Dispatcher.new
