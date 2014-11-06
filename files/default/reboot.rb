@@ -27,7 +27,7 @@ class Chef
         node.save
       end
 
-      def report # rubocop:disable
+      def report
         return unless success?
         return unless enabled?
         return unless should_reboot?
