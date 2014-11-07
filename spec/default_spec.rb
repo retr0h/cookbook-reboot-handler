@@ -8,7 +8,7 @@ describe 'reboot-handler::default' do
       .with('/var/chef/handlers/reboot')
   end
   let(:runner) do
-    ChefSpec::Runner.new do |node|
+    ChefSpec::ServerRunner.new do |node|
       node.set['chef_handler']['handler_path'] = '/var/chef/handlers'
     end
   end

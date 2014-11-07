@@ -11,7 +11,9 @@ describe Chef::Handler::Reboot do
   end
 
   let(:handler) { Chef::Handler::Reboot.new }
-  let(:node) { ChefSpec::Runner.new.converge('reboot-handler::default').node }
+  let(:node) do
+    ChefSpec::ServerRunner.new.converge('reboot-handler::default').node
+  end
   let(:status) do
     Chef::RunStatus.new node, Chef::EventDispatch::Dispatcher.new
   end
