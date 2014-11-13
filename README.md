@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/retr0h/cookbook-reboot-handler.png?branch=master)](https://travis-ci.org/retr0h/cookbook-reboot-handler)
-[![Dependency Status](https://gemnasium.com/retr0h/cookbook-reboot-handler.png)](https://gemnasium.com/retr0h/cookbook-reboot-handler)
+[![Build Status](http://img.shields.io/travis/retr0h/cookbook-reboot-handler.svg?style=flat-square)](https://travis-ci.org/retr0h/cookbook-reboot-handler)
+[![Dependency Status](http://img.shields.io/gemnasium/retr0h/cookbook-reboot-handler.svg?style=flat-square)](https://gemnasium.com/retr0h/cookbook-reboot-handler)
+[![Chef](http://img.shields.io/cookbook/v/reboot-handler.svg?style=flat-square)](https://supermarket.getchef.com/cookbooks/reboot-handler)
 
 Description
 ===========
