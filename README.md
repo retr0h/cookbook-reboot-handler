@@ -13,7 +13,8 @@ in a given role.
 Requirements
 ============
 
-* Chef 11
+* Chef 12
+* Ruby 2.1.0/2.2.0
 
 chef_handler
 ------------
